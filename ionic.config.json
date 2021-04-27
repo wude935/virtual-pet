@@ -1,0 +1,7 @@
+{
+  "name": "virtual-pet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
