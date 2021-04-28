@@ -10,7 +10,7 @@ function Canvas(props: any) {
     };
     
     function draw(p5: any) {
-      p5.background("rgb(100%,100%,10%)");
+      p5.background("rgb(100%,10%,10%)");
       p5.stroke(255);
       p5.strokeWeight(4);
       p5.noFill();
