@@ -15,7 +15,7 @@ function Home(){
         <div className="layoutContainer">
           <div className="contentContainer">
             <div className="canvasContainer">
-              <Canvas/>
+              <Canvas rectHeight={200} derekiscool={true}/>
             </div>
           </div>
         </div>

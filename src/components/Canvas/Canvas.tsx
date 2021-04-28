@@ -11,18 +11,23 @@ function Canvas(props: any) {
     };
     
     function draw(p5: any) {
-      p5.background("rgb(100%,10%,10%)");
-      p5.stroke(255);
-      p5.strokeWeight(4);
-      p5.noFill();
-      p5.ellipse(a, b, 100, 100);
-      if (a >= p5.width) {
-        speed = -3;
-      }
-      if (a === 90) {
-        speed = 3;
-      }
-      a = a + speed;  
+        if (props.derekiscool) {
+            p5.background("rgb(100%,100%,10%)");
+        }
+        else {
+            p5.background("rgb(100%,10%,10%)");
+        }
+        p5.stroke(255);
+        p5.strokeWeight(4);
+        p5.noFill();
+        p5.rect(a, b, 100, props.rectHeight);
+        if (a >= p5.width) {
+            speed = -3;
+        }
+        if (a === 90) {
+            speed = 3;
+        }
+        a = a + speed;  
     };
     
     return (
