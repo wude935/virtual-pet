@@ -1,14 +1,16 @@
-import './ExploreContainer.css';
+import './InteractMenu.css';
+import React from "react";
 
-interface ContainerProps { }
+interface ComponentProps { }
 
-const ExploreContainer: React.FC<ContainerProps> = () => {
+function InteractMenu(props: ComponentProps){
   return (
     <div className="container">
       <strong>Ready to create an app?</strong>
       <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <div>hello</div>
     </div>
   );
 };
 
-export default ExploreContainer;
+export default InteractMenu;
