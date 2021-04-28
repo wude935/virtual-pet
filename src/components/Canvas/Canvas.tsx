@@ -11,7 +11,7 @@ function Canvas(props: any) {
     };
     
     function draw(p5: any) {
-        if (props.derekiscool) {
+        if (!props.derekiscool) {
             p5.background("rgb(100%,100%,10%)");
         }
         else {
