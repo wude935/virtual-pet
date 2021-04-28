@@ -25,7 +25,7 @@ function Canvas(props: any) {
     };
     
     return (
-        <Sketch setup={setup} draw={draw} className="p5Canvas" />          
+        <Sketch setup={setup} draw={draw} style={{height: "100%", width: "100%"}} />          
     );
 }
 
