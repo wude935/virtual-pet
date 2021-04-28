@@ -6,6 +6,7 @@ function Canvas(props: any) {
     let speed = 3;
 
     function setup(p5: any, canvasParentRef: any) {
+        let xyz = p5.createCanvas(1000, 800).parent(canvasParentRef);
       //Canvas of size 1000x800 
     };
     
