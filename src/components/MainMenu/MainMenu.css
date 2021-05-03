@@ -1,0 +1,6 @@
+.MainMenu {
+    grid-column: 1/3;
+    display: grid;
+    height: min-content;
+    place-items: center;
+}

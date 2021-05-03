@@ -7,16 +7,10 @@
 
 .contentContainer {
     display: grid;
+    place-items: center;
     grid-template-columns: 80% 20%;
-    grid-template-areas: "canvas interaction-menu";
-    background-color: blue;
     max-width: 1500px;
-    width: 1500px;
-    height: 500px;
-}
-
-.CanvasContainer {
-    height: 100%;
     width: 100%;
-    grid-area: canvas;
+    max-height: 750px;
+    height: 100%;
 }
