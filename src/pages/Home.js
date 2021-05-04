@@ -4,7 +4,6 @@ import Canvas from '../components/Canvas/Canvas'
 import InteractMenu from '../components/InteractMenu/InteractMenu'
 import MainMenu from '../components/MainMenu/MainMenu';
 import './Home.css';
-import P5Wrapper from "react-p5-wrapper";
 
 function Home() {
   const startPet = {

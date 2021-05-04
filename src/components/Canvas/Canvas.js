@@ -2,14 +2,19 @@
 import './Canvas.css';
 import { useCallback } from "react";
 import Sketch from "react-p5";
+import test from "../../images/app.js"
 
 let a = 300;
 let b = 300;
 let speed = 3;
-
+let img;
 function Canvas(props) {
+
     const setup = (p5, canvasParentRef) => {
         p5.createCanvas(canvasParentRef.offsetWidth, canvasParentRef.offsetHeight).parent(canvasParentRef);
+        img = p5.loadImage(test);
+        img.p5.resize(50,0)
+        console.log(img)
     };
 
 
@@ -25,6 +30,7 @@ function Canvas(props) {
             p5.strokeWeight(4);
             p5.noFill();
             p5.rect(a, b, 100, 200);
+            p5.image(img, 100, 100);
             if (a >= p5.width) {
                 speed = -3;
             }
