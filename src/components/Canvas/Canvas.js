@@ -17,7 +17,6 @@ function Canvas(props) {
         console.log(img)
     };
 
-
     const draw = useCallback((p5, canvasParentRef) => {
         if (props.game.start) {
             if (props.pet.boredom > 10) {
