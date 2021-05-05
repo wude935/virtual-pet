@@ -40,36 +40,37 @@ function Canvas(props) {
     const draw = useCallback((p5, canvasParentRef) => {
         p5.background("rgb(100%, 100%, 100%)");
         if (props.game.start) {
-            if (props.pet.alive){
             // bored
-                if (props.pet.boredom <= 90) {
-                    p5.background("rgb(100%,10%,10%)");
-                    p5.image(run, x, p5.height-300);
-                    run.resize(300, 0);
-                }
-                else {
-                    p5.image(stand, x, p5.height-300);
-                    stand.resize(300, 0);
-                }
-
-                // hungry
-                if (props.pet.hunger <= 90){
-                    bored.resize(300,0);
-                    p5.image(bored, x, p5.height-300);
-                }
-                else if (props.pet.hunger <= 60){
-                    food1.resize(300,0);
-                    if (y != p5.height-300){
-                        p5.image(food1, 400, y);
-                        y += 10;
-                    }
-                    else{
-                        p5.image(food2, 400, p5.height-300)
-                        food2.resize(300, 0);
-                    }
-                }
+            if (props.pet.boredom <= 70) {
+                p5.background("rgb(100%,10%,10%)");
+                p5.image(run, x, p5.height-300);
+                x -= 3;
+                run.resize(300, 0);
             }
-            else{
+            else {
+                p5.image(stand, x, p5.height-300);
+                stand.resize(300, 0);
+            }
+            // hungry
+            // if (props.pet.hunger <= 90){
+            //     bored.resize(300,0);
+            //     p5.image(bored, x, p5.height-300);
+            // }
+            // else if (props.pet.hunger <= 60){
+            //     food1.resize(300,0);
+            //     if (y != p5.height-300){
+            //         p5.image(food1, 400, y);
+            //         y += 10;
+            //     }
+            //     else{
+            //         p5.image(food2, 400, p5.height-300)
+            //         food2.resize(300, 0);
+            //     }
+            // }
+
+            //ded
+            if (!props.pet.alive){
+                p5.background("rgb(100%, 100%, 100%)");
                 p5.image(ded, x, p5.height-300);
                 ded.resize(300, 0);
             }
