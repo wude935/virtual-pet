@@ -4,45 +4,75 @@ import { useCallback } from "react";
 import Sketch from "react-p5";
 import img1 from "../../images/standing.gif";
 import img2 from "../../images/bored.gif";
+import img3 from "../../images/run.gif";
+import img4 from "../../images/food1.png";
+import img5 from "../../images/food2.png";
+import img6 from "../../images/ded.png";
 
-let a = 300;
-let b = 300;
-let speed = 3;
+let x;
+let y;
 let stand;
 let bored;
+let run;
+let food1;
+let food2;
+let ded;
 function Canvas(props) {
 
     const setup = (p5, canvasParentRef) => {
         p5.createCanvas(canvasParentRef.offsetWidth, canvasParentRef.offsetHeight).parent(canvasParentRef);
         stand = p5.loadImage(img1);
         bored = p5.loadImage(img2);
+        run = p5.loadImage(img3);
+        food1 = p5.loadImage(img4);
+        food2 = p5.loadImage(img5);
+        ded = p5.loadImage(img6);
         console.log(stand)
         console.log(bored)
+        console.log(run)
+        console.log(food1)
+        console.log(food2)
+        console.log(ded)
+        x = p5.width/2-100;
+        y = 0;
     };
 
     const draw = useCallback((p5, canvasParentRef) => {
+        p5.background("rgb(100%, 100%, 100%)");
         if (props.game.start) {
-            if (props.pet.boredom <= 10) {
-                p5.background("rgb(100%,10%,10%)");
-                p5.image(bored, 0, 200);
-                bored.resize(300, 0);
+            if (props.pet.alive){
+            // bored
+                if (props.pet.boredom <= 90) {
+                    p5.background("rgb(100%,10%,10%)");
+                    p5.image(run, x, p5.height-300);
+                    run.resize(300, 0);
+                }
+                else {
+                    p5.image(stand, x, p5.height-300);
+                    stand.resize(300, 0);
+                }
+
+                // hungry
+                if (props.pet.hunger <= 90){
+                    bored.resize(300,0);
+                    p5.image(bored, x, p5.height-300);
+                }
+                else if (props.pet.hunger <= 60){
+                    food1.resize(300,0);
+                    if (y != p5.height-300){
+                        p5.image(food1, 400, y);
+                        y += 10;
+                    }
+                    else{
+                        p5.image(food2, 400, p5.height-300)
+                        food2.resize(300, 0);
+                    }
+                }
             }
-            else {
-                p5.background("rgb(100%,100%,100%)");
-                p5.image(stand, 0, 200);
-                stand.resize(300, 0);
+            else{
+                p5.image(ded, x, p5.height-300);
+                ded.resize(300, 0);
             }
-            p5.stroke(255);
-            p5.strokeWeight(4);
-            p5.noFill();
-            p5.rect(a, b, 100, 200);
-            if (a >= p5.width) {
-                speed = -3;
-            }
-            if (a === 0) {
-                speed = 3;
-            }
-            a = a + speed;
         }
     }, [props.pet, props.game]);
 
@@ -50,5 +80,6 @@ function Canvas(props) {
         <Sketch setup={setup} draw={draw} className="canvas" />
     );
 }
+
 
 export default Canvas;

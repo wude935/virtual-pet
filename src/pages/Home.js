@@ -62,7 +62,7 @@ function Home() {
           return (
             setPet({ ...pet, hunger: pet.hunger - .5, boredom: pet.boredom - 1, hygiene: pet.hygiene - .3 })
           );
-        }, 1000);
+        }, 100);
       }
       // otherwise, say confirmation
       else {
