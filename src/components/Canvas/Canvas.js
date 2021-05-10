@@ -1,6 +1,6 @@
 
 import './Canvas.css';
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import Sketch from "react-p5";
 import img1 from "../../images/standing.gif";
 import img2 from "../../images/bored.gif";
@@ -72,7 +72,7 @@ function Canvas(props) {
                 ded.resize(300, 0);
             }
         }
-    }, [props.pet, props.game]);
+    }, [props.pet.boredom, props.pet.hunger, props.pet.hygiene, props.game, props.pet]);
 
     return (
         <Sketch setup={setup} draw={draw} className="canvas" />

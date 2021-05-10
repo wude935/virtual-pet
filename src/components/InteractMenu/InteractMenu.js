@@ -2,7 +2,35 @@ import './InteractMenu.css';
 import React, { useState, useEffect } from "react";
 import { IonButton } from '@ionic/react'
 
+
+
 function InteractMenu(props) {
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    }
+  },[])
+  
+  // press f to feed
+  // press p to play
+  // press c to clean
+  function handleKeyPress(event) {
+    switch(event.keyCode) {
+      case 70:
+        props.actions.feed()
+        break;
+      case 80:
+        props.actions.play()
+        break;
+      case 67:
+        props.actions.clean();
+        break;
+      default:
+        break;
+    }
+  }
+
   function Stats(props) {
     return (
       <div className="stats">

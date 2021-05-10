@@ -3,9 +3,16 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import Canvas from '../components/Canvas/Canvas'
 import InteractMenu from '../components/InteractMenu/InteractMenu'
 import MainMenu from '../components/MainMenu/MainMenu';
+import FeedWav from '../sound/feed.wav';
+import PlayWav from '../sound/play.wav';
+import CleanWav from '../sound/clean.wav';
 import './Home.css';
 
 function Home() {
+  const feedSound = new Audio(FeedWav);
+  const playSound = new Audio(PlayWav);
+  const cleanSound = new Audio(CleanWav);
+
   const startPet = {
     name: "Your Pet",
     type: "",
@@ -26,25 +33,25 @@ function Home() {
   // increases hunger by 30 and boredom by 15 but lowers hygiene by 20
   function feed() {
     setPet({ ...pet, hunger: Math.min(100, pet.hunger + 40), boredom: Math.min(100, pet.boredom + 15), hygiene: Math.max(0, pet.hygiene - 10) })
+    feedSound.play()
   }
 
   // increases boredom by 50 but lowers hunger by 10 and hygiene by 20
   function play() {
     setPet({ ...pet, hunger: Math.max(0, pet.hunger - 10), boredom: Math.min(100, pet.boredom + 50), hygiene: Math.max(0, pet.hygiene - 20) })
+    playSound.play()
   }
 
   // increases hygiene by 40 and boredom by 5
   function clean() {
     setPet({ ...pet, boredom: Math.min(100, pet.boredom + 5), hygiene: Math.min(100, pet.hygiene + 40) })
+    console.log(cleanSound)
+    cleanSound.play()
   }
 
   function name(name) {
     setPet({ ...pet, name: name })
   }
-
-  let a = 300;
-  let b = 300;
-  let speed = 3;
 
   useMemo(() => {
     // checks if the pet is alive
