@@ -46,7 +46,7 @@ export function PetProviderContext(props) {
     function play() {
         setPet({ ...pet, hunger: Math.max(0, pet.hunger - 10), boredom: Math.min(100, pet.boredom + 50), hygiene: Math.max(0, pet.hygiene - 20), action: 'play' })
         // change the number based on the number of miliseconds the animation takes
-        setTimeout(() => setPet({...pet, action: undefined}), 2000)
+        setTimeout(() => setPet({...pet, action: undefined}), 5000)
         if (!game.mute){
             playSound.play()
         }
@@ -56,7 +56,7 @@ export function PetProviderContext(props) {
     function clean() {
         setPet({ ...pet, boredom: Math.min(100, pet.boredom + 5), hygiene: Math.min(100, pet.hygiene + 40), action: 'clean' })
         // change the number based on the number of miliseconds the animation takes
-        setTimeout(() => setPet({...pet, action: undefined}), 2000)
+        setTimeout(() => setPet({...pet, action: undefined}), 5000)
         if (!game.mute){
             cleanSound.play()
         }
