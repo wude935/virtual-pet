@@ -36,7 +36,7 @@ export function PetProviderContext(props) {
     function feed() {
         setPet({ ...pet, hunger: Math.min(100, pet.hunger + 40), boredom: Math.min(100, pet.boredom + 15), hygiene: Math.max(0, pet.hygiene - 10), action: 'feed'})
         // change the number based on the number of miliseconds the animation takes
-        setTimeout(() => setPet({...pet, action: undefined}), 2000)
+        setTimeout(() => setPet({...pet, action: undefined}), 5000)
         if (!game.mute){
             feedSound.play()
         }

@@ -64,34 +64,27 @@ function Canvas(props) {
             //HERE IS THE CODE CAITLIN
             // go to setpetcontext line 57 and change the time it takes the animation to run
             // feed
+            stand.resize(300, 0);
+            p5.image(stand, x, y);
             if (pet.action == "feed"){
                 console.log('run animation')
-                food1.resize(300,0);
-                eat.resize(300, 0);
-                // food drops
-                if (tempy != p5.height){
-                    p5.image(food1, 400, tempy);
-                    tempy += 15;
-                }
-                else{
-                    p5.background("rgb(100%, 100%, 100%)");
-                    food2.resize(300, 0);
-                    p5.image(food2, 400, p5.height-300)
+                food2.resize(300,0);
+                p5.image(food2, 400, p5.height-300)
 
-                    // runs to food and eats
-                    if (x < 350){
-                        p5.image(run, x, y);
-                        x += 5;
-                    }
-                    else if (x>450){
-                        p5.image(run, x, y);
-                        x -= 5;
-                    }
-                    else {
-                        p5.background("rgb(100%, 100%, 100%)");
-                        p5.image(eat, x, y);
-                    }
+                // runs to food and eats
+                if (x < 350){
+                    p5.image(run, x, y);
+                    x += 5;
                 }
+                else if (x>450){
+                    p5.image(run, x, y);
+                    x -= 5;
+                }
+                else {
+                    eat.resize(300, 0);
+                    p5.image(eat, x, y);
+                }
+            
             }
 
             // play
