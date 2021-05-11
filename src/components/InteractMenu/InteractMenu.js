@@ -25,13 +25,13 @@ function InteractMenu(props) {
     if (!pet.action) {
       switch(event.keyCode) {
         case 70:
-          props.actions.feed()
+          petActions.feed()
           break;
         case 80:
-          props.actions.play()
+          petActions.play()
           break;
         case 67:
-          props.actions.clean();
+          petActions.clean();
           break;
         default:
           break;

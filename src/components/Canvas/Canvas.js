@@ -13,6 +13,8 @@ import img6 from "../../images/ded.png";
 import img7 from "../../images/ball.png";
 import img8 from "../../images/bath.gif";
 import img9 from "../../images/eat.gif";
+import img10 from "../../images/heart.png";
+
 
 let x;
 let y;
@@ -27,6 +29,7 @@ let ded;
 let ball;
 let bath;
 let tempy;
+let heart;
 function Canvas(props) {
     const {game, setGame} = useContext(SetGameContext);
     const {pet, setPet, petActions} = useContext(SetPetContext);
@@ -42,6 +45,7 @@ function Canvas(props) {
         ball = p5.loadImage(img7);
         bath = p5.loadImage(img8);
         eat = p5.loadImage(img9);
+        heart = p5.loadImage(img10);
         console.log(stand)
         console.log(bored)
         console.log(runL)
@@ -51,11 +55,12 @@ function Canvas(props) {
         console.log(ball)
         console.log(bath)
         console.log(eat)
+        console.log(heart)
 
         // location of pet at all times
         x = p5.width/2-100;
         y = p5.height-300;
-        tempy = 0;
+        tempy = y;
     };
 
     const draw = useCallback((p5, canvasParentRef) => {
@@ -92,7 +97,16 @@ function Canvas(props) {
             else if (pet.action == "play"){
                 p5.background("rgb(100%, 100%, 100%)");
                 ball.resize(200,0);
+                heart.resize(80,0);
                 p5.image(ball, 100, p5.height-200);
+                p5.image(heart,x+120,tempy+20);
+                p5.image(heart,x+60,tempy);
+                if (tempy >= y){
+                    tempy -= 10;
+                }
+                else if(tempy < y-100){
+                    tempy += 10;
+                }
                 if (x < 50){
                     p5.image(runR, x, y);
                     x += 5;
@@ -103,6 +117,7 @@ function Canvas(props) {
                 }
                 else {
                     p5.image(stand, x, y);
+                    
                 }
             }
             
