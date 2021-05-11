@@ -8,22 +8,22 @@ import SetPetContext from '../../contexts/SetPetContext';
 
 
 function InteractMenu(props) {
-  const {game, setGame} = useContext(SetGameContext);
-  const {pet, setPet, petActions} = useContext(SetPetContext);
+  const { game, setGame } = useContext(SetGameContext);
+  const { pet, setPet, petActions } = useContext(SetPetContext);
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     }
-  },[])
-  
+  }, [])
+
   // press f to feed
   // press p to play
   // press c to clean
   function handleKeyPress(event) {
     if (!pet.action) {
-      switch(event.keyCode) {
+      switch (event.keyCode) {
         case 70:
           petActions.feed()
           break;
@@ -60,7 +60,7 @@ function InteractMenu(props) {
         <Stats label="Hunger" value={pet.hunger}></Stats>
         <Stats label="Boredom" value={pet.boredom}></Stats>
         <Stats label="Hygiene" value={pet.hygiene}></Stats>
-        <p>Score: {game.score}</p>
+        <p>Score:  {game.score}</p>
       </div>
       <IonButton onClick={() => petActions.feed()} disabled={!pet.alive || pet.action}>Feed</IonButton>
       <IonButton onClick={() => petActions.play()} disabled={!pet.alive || pet.action}>Play</IonButton>
